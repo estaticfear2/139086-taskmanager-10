@@ -1,8 +1,10 @@
+'use strict';
+
 const TASK_COUNT = 3;
 
 const createSiteMenuTemplate = () => {
-	return (
-		`<section class="control__btn-wrap">
+  return (
+    `<section class="control__btn-wrap">
   			<input
   				type="radio"
   				name="control"
@@ -30,12 +32,12 @@ const createSiteMenuTemplate = () => {
   				>STATISTICS</label
   			>
   		</section>`
-	);
+  );
 };
 
 const createFilterTemplate = () => {
-	return (
-		`<section class="main__filter filter container">
+  return (
+    `<section class="main__filter filter container">
         <input
           type="radio"
           id="filter__all"
@@ -103,7 +105,7 @@ const createFilterTemplate = () => {
           >Archive <span class="filter__archive-count">115</span></label
         >
       </section>`
-	);
+  );
 };
 
 const createBoardTemplate = () => {
@@ -456,24 +458,24 @@ const createLoadMoreBtnTemplate = () => {
   );
 };
 
-const render = (container, template, place = 'beforeend') => {
-	container.insertAdjacentHTML(place, template);
+const render = (container, template, place = `beforeend`) => {
+  container.insertAdjacentHTML(place, template);
 };
 
-const siteMainElement = document.querySelector('.main');
-const siteHeaderElement = siteMainElement.querySelector('.main__control');
+const siteMainElement = document.querySelector(`.main`);
+const siteHeaderElement = siteMainElement.querySelector(`.main__control`);
 
 render(siteHeaderElement, createSiteMenuTemplate());
 render(siteMainElement, createFilterTemplate());
 render(siteMainElement, createBoardTemplate());
 
-const taskListElement = siteMainElement.querySelector('.board__tasks');
+const taskListElement = siteMainElement.querySelector(`.board__tasks`);
 
 render(taskListElement, createTaskEditTemplate());
 for (let i = 1; i <= TASK_COUNT; i++) {
   render(taskListElement, createTaskTemplate());
 }
 
-const boardElement = siteMainElement.querySelector('.board');
+const boardElement = siteMainElement.querySelector(`.board`);
 
 render(boardElement, createLoadMoreBtnTemplate());
